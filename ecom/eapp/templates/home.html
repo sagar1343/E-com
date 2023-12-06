@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="row mt-5">
+    <div class="col-3 ">
+        <ul class="list-group">
+            <li class="text-white list-group-item category-head">Category</li>
+            {% for item in category %}
+            <li class="list-group-item ">{{item}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-9 d-flex flex-wrap flex-row gap-3">
+        {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <img alt="product_image" class="card-img-top " src={% static 'eapp/def.png' %}>
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                </div>
+                <a class="btn custom-btn" href="#">Add to cart</a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
