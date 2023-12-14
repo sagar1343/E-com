@@ -5,15 +5,16 @@
     <div class="col-3 ">
         <ul class="list-group">
             <li class="text-white list-group-item category-head">Category</li>
+            <a href={% url 'eapp-home' %} class="list-group-item list-group-item-action">All</a>
             {% for item in category %}
-            <li class="list-group-item ">{{item}}</li>
+                <a href={% url 'eapp-filter' category_id=item.id %} class="list-group-item list-group-item-action"> {{ item }} </a>
             {% endfor %}
         </ul>
     </div>
     <div class="col-9 d-flex flex-wrap flex-row gap-3">
         {% for product in products %}
         <div class="card" style="width: 18rem;">
-            <img alt="product_image" class="card-img-top " src={% static 'eapp/def.png' %}>
+            <img alt="product_image" class="card-img-top " src={{ product.product_image.url }}>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title">{{ product.name }}</h5>
