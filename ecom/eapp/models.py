@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -17,3 +18,23 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CartItem(models.Model):
+    item_name = models.OneToOneField(to=Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.item_name}*{self.quantity}"
+
+    def item_total(self):
+        return self.item_name.price*self.quantity
+
+
+class Cart(models.Model):
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
+    cartItem = models.ManyToManyField(to=CartItem)
+
+    def __str__(self):
+        return f"{self.user}'s cart"
+
