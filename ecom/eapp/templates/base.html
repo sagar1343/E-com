@@ -3,48 +3,50 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>E-com</title>
+    <title>Fresh Market</title>
     {% load static %}
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href={%  static 'eapp/base.css' %}>
-    <link rel="stylesheet" href={%  static 'eapp/home.css' %}>
+    <link rel="stylesheet" href={% static 'eapp/home.css' %}>
+    <link rel="stylesheet" href={% static 'eapp/base.css' %}>
 </head>
 <body>
-
-<nav class="sticky-top navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href={% url 'eapp-home' %}>
-        <img src={% static 'eapp/brand_logo.jpg' %} alt="leaf_logo" width="50" class="rounded-circle">
+            <img src={% static 'eapp/brand_logo.jpg' %} alt="leaf_logo" width="50" class="rounded-circle">
         </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item list-unstyled">
+            <a aria-current="page" class="brand_name nav-link active " href={% url 'eapp-home' %}>FRESH
+                MARKET</a>
+        </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll w-100 justify-content-end "
+                style="--bs-scroll-height: 100px;">
+
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href={% url 'eapp-home' %}>Home</a>
-                </li>
-            </ul>
-            <div>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href={% url 'eapp-store' %}>
+                    <a class="nav-link" href={% url 'eapp-store' %}>
                         <svg class="bi bi-cart" fill="currentColor" height="25" viewBox="0 0 16 16"
                              width="25" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                         </svg>
                         <span id="total_item" class="badge text-bg-warning"> {{ total_quantity.quantity__sum }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href={% url 'eapp-account' %}>
+                    </a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href={% url 'eapp-account' %}>
                         <svg class="bi bi-person-fill" fill="currentColor" height="25" viewBox="0 0 16 16"
                              width="25" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                         </svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -52,7 +54,6 @@
     {% block content %}
     {% endblock content %}
 </div>
-<script src={% static 'eapp/home.js' %}></script>
 <script crossorigin="anonymous"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<div class="row mt-5">
-    <div class="col-3 ">
+<div class="row justify-content-center mt-5">
+    <div class="col-md-3 mb-5 ">
         <ul class="list-group">
             <li class="text-white list-group-item category-head">Category</li>
             <a href="{% url 'eapp-home' %}" class="list-group-item list-group-item-action">All</a>
@@ -11,7 +11,7 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="col-9 d-flex flex-wrap flex-row gap-3">
+    <div class="col-9 d-flex flex-wrap flex-row justify-content-center align-center gap-3">
         {% for product in products %}
             <div class="card" style="width: 18rem;">
                 <img alt="product_image" class="card-img-top " src="{{ product.product_image.url }}">
