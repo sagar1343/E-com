@@ -1,1 +1,1 @@
-<h1>Shopping Cart Application buit on django</h1>
+<h1>Shopping Cart Application built on django</h1>
