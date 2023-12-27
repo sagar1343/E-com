@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <h1 class="mt-5">Shopping Cart</h1>
-    <p class="m-2">You have total {{ total_quantity.quantity__sum }} items in cart with total price of ${{ total_price }} </p>
+    <p class="m-2">You have total {{ total_quantity.quantity__sum }} items in cart with total price of
+        ${{ total_price }} </p>
     <a href={% url 'eapp-clear' %} class="btn btn-light my-4">Clear All</a>
     <table class="table text-center">
         <thead>
@@ -16,7 +17,7 @@
         {% for item in cart_item %}
             <tr>
                 <td>{{ item.item_name }}</td>
-                <td>
+                <td class="table_data">
                     <a href={% url 'eapp-decre' product_id=item.item_name_id %} class="btn btn-primary mx-3"><i
                         class="bi bi-dash"></i></a>
                     {{ item.quantity }} in cart

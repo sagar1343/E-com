@@ -1,36 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-{% load static %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-3 mb-5 ">
-        <ul class="list-group">
-            <li class="text-white list-group-item category-head">Category</li>
-            <a href="{% url 'eapp-home' %}" class="list-group-item list-group-item-action">All</a>
-            {% for item in category %}
-                <a href={% url 'eapp-filter' category_id=item.id %} class="list-group-item list-group-item-action"> {{ item }} </a>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="col-9 d-flex flex-wrap flex-row justify-content-center align-center gap-3">
-        {% for product in products %}
-            <div class="card" style="width: 18rem;">
-                <img alt="product_image" class="card-img-top " src="{{ product.product_image.url }}">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">${{ product.price }}</p>
-                    </div>
-                <a id=btn_{{ product.id }} class="btn custom-btn" href="{% url 'eapp-add' product_id=product.id %}">Add to Cart</a>
-                    {% for i in cart_item %}
-                        {% if i.item_name_id == product.id %}
-                    	    <a class="badge rounded-pill text-bg-success"><i class="bi bi-check-lg"></i></a>
-                        {% else %}
-                        {% endif %}
-                    {% endfor %}
 
+    {% load static %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-3 mb-5 ">
+            <ul class="list-group">
+                <li class="text-white list-group-item category-head">Category</li>
+                <a href="{% url 'eapp-home' %}" class="list-group-item list-group-item-action">All</a>
+                {% for item in category %}
+                    <a href={% url 'eapp-filter' category_id=item.id %} class="list-group-item list-group-item-action">
+                    {{ item }} </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-9 d-flex flex-wrap flex-row justify-content-center align-center gap-3">
+            {% for product in products %}
+                <div class="card" style="width: 18rem;">
+                    <img alt="product_image" class="card-img-top " src="{{ product.product_image.url }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title ">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.price }}</p>
+                        </div>
+                        <a id=btn_{{ product.id }} class="btn custom-btn"
+                           href="{% url 'eapp-add' product_id=product.id %}">Add to Cart</a>
+                        {% for i in cart_item %}
+                            {% if i.item_name_id == product.id %}
+                                <i class="bi bi-clipboard-check"></i>
+                            {% else %}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
+
 {% endblock %}

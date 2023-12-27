@@ -1,27 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 
+
+body {
+    background-color: #FBFEF9;
+}
+
+nav {
+    background-color: #191923;
+}
+
+label, .form-text {
+    color: white;
+}
+
+.errorlist {
+    color: white;
+}
+
 .list-group-item.active {
-    background-color: #ff9f1c;
+    background-color: #0d6efd;
     border: none;
 }
 
 .custom-btn {
     color: #ffffff;
-    background-color: #ff9f1c;
+    background-color: #0d6efd;
 }
 
 .custom-btn:hover,
 .custom-btn:focus,
 .custom-btn:active {
     color: white;
-    background-color: #ff9500 !important;
+    background-color: #0068ff !important;
 }
 
 .list-group-item:first-child {
-    background-color: #ff9f1c;
+    background-color: #0d6efd;
 }
 
 .brand_name {
     font-weight: bolder;
     font-family: 'Rajdhani', sans-serif;
+    color: white;
+}
+
+.card-img-top {
+    height: 12rem;
+    object-fit: cover;
+}
+
+
+@media (max-width: 544px) {
+    .table_data {
+        display: flex;
+        flex-direction: column;
+    }
 }

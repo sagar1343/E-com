@@ -21,20 +21,12 @@ class Product(models.Model):
 
 
 class CartItem(models.Model):
-    item_name = models.OneToOneField(to=Product, on_delete=models.CASCADE)
+    customer = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    item_name = models.ForeignKey(to=Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
 
     def __str__(self):
-        return f"{self.item_name}*{self.quantity}"
+        return f"{self.customer}'s cart item"
 
     def item_total(self):
-        return self.item_name.price*self.quantity
-
-
-class Cart(models.Model):
-    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
-    cartItem = models.ManyToManyField(to=CartItem)
-
-    def __str__(self):
-        return f"{self.user}'s cart"
-
+        return self.item_name.price * self.quantity

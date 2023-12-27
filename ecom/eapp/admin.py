@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Category, CartItem, Cart
+from .models import Product, Category, CartItem
 
 
 # Register your models here.
@@ -11,4 +11,4 @@ class ProductList(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductList)
-admin.site.register([Category, CartItem, Cart])
+admin.site.register([Category, CartItem])
