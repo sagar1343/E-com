@@ -69,7 +69,7 @@ def add_product_to_cart(request, product_id):
         new_cart_item = CartItem(item_name=product, quantity=1, customer=user)
         new_cart_item.save()
     messages.success(request, f"{product.name} added to the cart")
-    return redirect(to='eapp-home')
+    return redirect(to='eapp-store')
 
 
 def increment_quantity(request, product_id):
